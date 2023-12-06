@@ -3,6 +3,7 @@ import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
 from PyQt5 import uic
 
+
 class Coffee(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -16,7 +17,9 @@ class Coffee(QMainWindow):
 
         self.tableWidget.setRowCount(len(result))
         self.tableWidget.setColumnCount(len(result[0]))
-        titles = [description[0] for description in cur.description]
+        self.tableWidget.setHorizontalHeaderLabels(
+            ['ID', 'Назавание сорта', 'Степень обжарки', 'молотый/в зёрнах', 'описание вкуса', 'цена',
+             'объём упаковки'])
         for i, elem in enumerate(result):
             for j, val in enumerate(elem):
                 self.tableWidget.setItem(i, j, QTableWidgetItem(str(val)))
